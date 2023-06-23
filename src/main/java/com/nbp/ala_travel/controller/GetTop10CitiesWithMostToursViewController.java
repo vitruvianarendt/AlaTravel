@@ -1,6 +1,6 @@
-package com.example.ala_travel.controller;
+package com.nbp.ala_travel.controller;
 
-import com.example.ala_travel.service.GetTop10CitiesWithMostToursViewService;
+import com.nbp.ala_travel.service.GetTop10CitiesWithMostToursViewService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

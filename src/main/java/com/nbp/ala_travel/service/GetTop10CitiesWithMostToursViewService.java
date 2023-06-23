@@ -1,7 +1,8 @@
-package com.example.ala_travel.service;
+package com.nbp.ala_travel.service;
 
-import com.example.ala_travel.repository.GetTop10CitiesWithMostToursViewRepository;
-import com.example.ala_travel.model.GetTop10CitiesWithMostToursViewModel;
+
+import com.nbp.ala_travel.model.GetTop10CitiesWithMostToursViewModel;
+import com.nbp.ala_travel.repository.GetTop10CitiesWithMostToursViewRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
