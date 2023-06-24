@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TourController {
     private final TourService service;
 
-    @PostMapping
+    @PostMapping("/createTour")
     public String createTour(Model model,
                              @RequestParam Long new_starting_point,
                              @RequestParam Long new_tour_guide_id,
