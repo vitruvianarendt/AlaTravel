@@ -23,7 +23,7 @@ public class TourController {
                              @RequestParam String new_desc,
                              @RequestParam Integer new_duration,
                              @RequestParam Integer new_max_participants) {
-        model.addAttribute("insertIntoReviewAndCheck",
+        model.addAttribute("createTour",
                 service.createTour(new_starting_point, new_tour_guide_id, new_city_id, new_title, new_desc,
                         new_duration, new_max_participants));
         model.addAttribute("new_starting_point", new_starting_point);

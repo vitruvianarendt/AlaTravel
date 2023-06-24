@@ -19,7 +19,7 @@ public class TourInstanceController {
     public String saveTourInstance(Model model,
                                    @RequestParam Long tourist_id,
                                    @RequestParam Long tour_instance_id) {
-        model.addAttribute("insertIntoReviewAndCheck",
+        model.addAttribute("saveTourInstance",
                 service.saveTourInstance(tourist_id, tour_instance_id));
         model.addAttribute("touristId", tourist_id);
         model.addAttribute("grade", tour_instance_id);
