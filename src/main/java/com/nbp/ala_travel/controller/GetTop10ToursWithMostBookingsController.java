@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class GetTop10ToursWithMostBookingsController {
     private final GetTop10ToursWithMostBookingsService service;
 
-    @GetMapping("/view2")
+    @GetMapping("/view1")
     public String getView2(Model model) {
-        model.addAttribute("top10CitiesWithMostTours", service.getTop10ToursWithMostBookings());
+        model.addAttribute("top10ToursWithMostBookings", service.getTop10ToursWithMostBookings());
         model.addAttribute("bodyContent", "get-top-10-tours-with-most-bookings-view");
         return "master-template";
     }

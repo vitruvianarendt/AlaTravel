@@ -1,0 +1,31 @@
+<div xmlns:th="www.thymeleaf.org">
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-12" th:if="${top10ToursWithMostBookings.size() > 0}">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Tour ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">City Name</th>
+                            <th scope="col">Number of Bookings</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="tour : ${top10ToursWithMostBookings}" class="tour">
+                            <td th:text="${tour.tour_id}"></td>
+                            <td th:text="${tour.title}"></td>
+                            <td th:text="${tour.city_name}"></td>
+                            <td th:text="${tour.number_of_tours}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-12" th:unless="${top10ToursWithMostBookings.size() > 0}">
+                <p>No tours found.</p>
+            </div>
+        </div>
+    </div>
+</div>

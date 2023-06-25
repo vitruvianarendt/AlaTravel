@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface GetBookingsForTouristRepository extends JpaRepository<GetBookingsForTourist, Long> {
+
     @Query(value = "select * from get_bookings_for_tourist(:touristId)", nativeQuery = true)
     List<GetBookingsForTourist> getBookingsForTourist(Long touristId);
 }

@@ -4,6 +4,7 @@ import com.nbp.ala_travel.service.PersonService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("personController")
 public class PersonController {
     private final PersonService service;
+
+    @GetMapping("/registerDefaultForm")
+    public String getRegisterDefaultForm(Model model) {
+        model.addAttribute("bodyContent", "register-default");
+        return "master-template";
+    }
+
+    @GetMapping("/registerDescPicForm")
+    public String getRegisterDescPicForm(Model model) {
+        model.addAttribute("bodyContent", "register-tourguide");
+        return "master-template";
+    }
+
+    @GetMapping("/loginForm")
+    public String getLoginForm(Model model) {
+        model.addAttribute("bodyContent", "login");
+        return "master-template";
+    }
 
     @PostMapping("/registerDefault")
     public String registerDefault(Model model,
@@ -24,14 +43,7 @@ public class PersonController {
                                   @RequestParam Integer new_istourguide) {
         model.addAttribute("registerDefault",
                 service.registerByDefault(new_firstname, new_lastname, new_email, new_password,new_phonenumber, new_istourguide));
-        model.addAttribute("new_firstname", new_firstname);
-        model.addAttribute("new_lastname", new_lastname);
-        model.addAttribute("new_email", new_email);
-        model.addAttribute("new_password", new_password);
-        model.addAttribute("new_phonenumber", new_phonenumber);
-        model.addAttribute("new_istourguide", new_istourguide);
-        model.addAttribute("bodyContent", "register-tourist");
-        return "master-template";
+        return "redirect:/personController/loginForm";
     }
 
     @PostMapping("/registerDescPic")
@@ -47,16 +59,7 @@ public class PersonController {
         model.addAttribute("registerDescPic",
                 service.registerDescPic(new_firstname, new_lastname, new_email, new_password,new_phonenumber,
                         new_istourguide, description, picture));
-        model.addAttribute("new_firstname", new_firstname);
-        model.addAttribute("new_lastname", new_lastname);
-        model.addAttribute("new_email", new_email);
-        model.addAttribute("new_password", new_password);
-        model.addAttribute("new_phonenumber", new_phonenumber);
-        model.addAttribute("new_istourguide", new_istourguide);
-        model.addAttribute("description", description);
-        model.addAttribute("picture", picture);
-        model.addAttribute("bodyContent", "register-tourguide");
-        return "master-template";
+        return "redirect:/personController/loginForm";
     }
 
     @PostMapping("/login")
@@ -64,10 +67,7 @@ public class PersonController {
                         @RequestParam String email,
                         @RequestParam String password) {
         model.addAttribute("login", service.login(email, password));
-        model.addAttribute("email", email);
-        model.addAttribute("password", password);
-        model.addAttribute("bodyContent", "register-tourguide");
-        return "master-template";
+        return "redirect:/getTop10CitiesWithMostTours/view1";
     }
 
 

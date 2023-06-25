@@ -1,0 +1,38 @@
+<div xmlns:th="www.thymeleaf.org">
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-12">
+                <h2>Your Favourite Tours</h2>
+            </div>
+            <div class="col-12" th:if="${touristFavouriteTours.size() > 0}">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Country Name</th>
+                            <th scope="col">City Name</th>
+                            <th scope="col">Tour Name</th>
+                            <th scope="col">Tour Guide First Name</th>
+                            <th scope="col">Tour Guide Last Name</th>
+                            <th scope="col">Tour Title</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="tour : ${touristFavouriteTours}" class="tour">
+                            <td th:text="${tour.country_name}"></td>
+                            <td th:text="${tour.city_name}"></td>
+                            <td th:text="${tour.tour_name}"></td>
+                            <td th:text="${tour.tour_guide_first_name}"></td>
+                            <td th:text="${tour.tour_guide_last_name}"></td>
+                            <td th:text="${tour.tour_title}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-12" th:unless="${touristFavouriteTours.size() > 0}">
+                <p>No favorite tours found.</p>
+            </div>
+        </div>
+    </div>
+</div>

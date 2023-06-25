@@ -1,0 +1,25 @@
+<div xmlns:th="www.thymeleaf.org">
+    <div class="container">
+        <h2>Tours in City</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Tour Title</th>
+                <th scope="col">Tour Guide</th>
+                <th scope="col">City</th>
+                <th scope="col">Duration (in hours)</th>
+                <th scope="col">Max Participants</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="tour : ${getToursByCity}">
+                <td th:text="${tour.title}"></td>
+                <td th:text="${tour.tour_guide_id}"></td>
+                <td th:text="${tour.city_id}"></td>
+                <td th:text="${tour.duration}"></td>
+                <td th:text="${tour.max_number_of_participants}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

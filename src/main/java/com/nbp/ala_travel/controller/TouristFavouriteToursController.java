@@ -16,15 +16,15 @@ public class TouristFavouriteToursController {
 
     private final TouristFavouriteToursService service;
 
-    @GetMapping("/view1/{touristId}")
-    public String touristFavouriteTours(Model model,
-                                        @PathVariable Long touristId,
-                                        @RequestParam String city_name) {
+    @GetMapping("/view1/{touristId}/{city_name}")
+    public String touristFavouriteTours(@PathVariable Long touristId,
+                                        @PathVariable String city_name,
+                                        Model model) {
         model.addAttribute("touristFavouriteTours",
                 service.filter_favourite_tours(touristId, city_name));
         model.addAttribute("touristId", touristId);
         model.addAttribute("city_name", city_name);
-        model.addAttribute("bodyContent", "touristFavouriteTours");
+        model.addAttribute("bodyContent", "tourist-favourite-tours");
         return "master-template";
     }
 }

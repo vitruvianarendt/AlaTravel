@@ -1,0 +1,29 @@
+<div xmlns:th="www.thymeleaf.org">
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-12" th:if="${getBookingsForTourist.size() > 0}">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Tour ID</th>
+                            <th scope="col">Booking</th>
+                            <th scope="col">City Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="booking : ${getBookingsForTourist}" class="booking">
+                            <td th:text="${booking.id}"></td>
+                            <td th:text="${booking.title}"></td>
+                            <td th:text="${booking.city_name}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-12" th:unless="${getBookingsForTourist.size() > 0}">
+                <p>No bookings found for the tourist.</p>
+            </div>
+        </div>
+    </div>
+</div>

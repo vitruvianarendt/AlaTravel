@@ -1,4 +1,4 @@
-<div xmlns:th="http://www.thymeleaf.org">
+<div xmlns:th="www.thymeleaf.org">
     <div class="container mb-4">
         <div class="row">
             <div class="col-12" th:if="${top10CitiesWithMostTours.size() > 0}">
@@ -6,22 +6,16 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">City name</th>
-                            <th scope="col">Number of tours</th>
+                            <th scope="col">City ID</th>
+                            <th scope="col">City Name</th>
+                            <th scope="col">Number of Tours</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="obj : ${top10CitiesWithMostTours}" class="product">
+                            <td th:text="${obj.city_id}"></td>
                             <td th:text="${obj.city_name}"></td>
                             <td th:text="${obj.number_of_tours}"></td>
-                            <td class="text-right">
-                                <th:block >
-                                    <a th:href="@{'/city/{id}' (id=${obj.city_id})}"
-                                       class="btn btn-sm btn-info ">
-                                        <i class="fa fa-trash">Details</i>
-                                    </a>
-                                </th:block>
-                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -30,4 +24,3 @@
         </div>
     </div>
 </div>
-
