@@ -16,9 +16,9 @@ public class DetailsAboutTour {
     @Id
     Long id;
     Long startingpointid;
-    Double latitude;
-    Double longitude;
-    Long tourugideid;
+//    Double latitude;
+//    Double longitude;
+    Long tourguideid;
     Long city_id;
     String city_name;
     String title;

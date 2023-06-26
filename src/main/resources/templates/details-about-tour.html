@@ -4,10 +4,10 @@
         <div th:each="tour : ${detailsAboutTour}">
             <h4>Title: <span th:text="${tour.title}"></span></h4>
             <p>Description: <span th:text="${tour.description}"></span></p>
-            <p>Duration: <span th:text="${tour.duration}"></span> minutes</p>
-            <p>Max Participants: <span th:text="${tour.maxParticipants}"></span></p>
-            <p>City: <span th:text="${city_name}"></span></p>
-            <p>Tour Guide: <span th:text="${tour.tourGuideName}"></span></p>
+            <p>Duration: <span th:text="${tour.duration}"></span> hours</p>
+            <p>Max Participants: <span th:text="${tour.maxnumberofparticipants}"></span></p>
+            <p>City: <span th:text="${tour.city_name}"></span></p>
+            <p>Tour Guide: <span th:text="${tour.guide_description}"></span></p>
             <hr>
         </div>
     </div>
