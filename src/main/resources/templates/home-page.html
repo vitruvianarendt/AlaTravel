@@ -1,0 +1,67 @@
+<style>
+    .container {
+        display: flex;
+    }
+    .card {
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    .top10CitiesWithMostTours {
+        width: 50%;
+        float: left;
+    }
+    .top10ToursWithMostBookings {
+        width: 50%;
+        float: right;
+    }
+    .intro-content {
+        width: 50%;
+        margin-bottom: 50px;
+        margin-top: 50px;
+    }
+    .card {
+        width: 70%;
+    }
+</style>
+<div xmlns:th="www.thymeleaf.org">
+    <div class="intro-content mx-auto">
+        <div>
+            <h1>Welcome to Ala Travel</h1>
+            <h2 class="ml-5">The place with best tours and best tour guides</h2>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="top10CitiesWithMostTours">
+            <div>
+                <h2>Top 10 Cities with most tours</h2>
+            </div>
+            <div class="row " th:each="obj : ${top10CitiesWithMostTours}">
+                <div class="col" >
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${obj.city_name}"></h5>
+                            <p class="card-text">Number of tours: <span th:text="${obj.number_of_tours}"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="top10ToursWithMostBookings">
+            <div>
+                <h2>Top 10 Tours with most cities</h2>
+            </div>
+            <div class="row " th:each="obj : ${top10ToursWithMostBookings}">
+                <div class="col" >
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${obj.title}"></h5>
+                            <p class="card-text">Number of tours: <span th:text="${obj.number_of_tours}"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
