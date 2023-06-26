@@ -4,6 +4,7 @@ import com.nbp.ala_travel.service.TourService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("tourController")
 public class TourController {
     private final TourService service;
+
+    @GetMapping("/createTourForm")
+    public String createTourForm(Model model) {
+        model.addAttribute("bodyContent", "create-tour-form");
+        return "master-template";
+    }
 
     @PostMapping("/createTour")
     public String createTour(Model model,
@@ -32,7 +39,7 @@ public class TourController {
         model.addAttribute("new_desc", new_desc);
         model.addAttribute("new_duration", new_duration);
         model.addAttribute("new_max_participants", new_max_participants);
-        model.addAttribute("bodyContent", "review");
+        model.addAttribute("bodyContent", "create-tour");
         return "master-template";
     }
 }

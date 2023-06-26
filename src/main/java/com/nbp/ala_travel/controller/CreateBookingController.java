@@ -4,6 +4,7 @@ import com.nbp.ala_travel.service.CreateBookingService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("createBookingController")
 public class CreateBookingController {
     private final CreateBookingService service;
+
+    @GetMapping("/create-form")
+    public String createBookingForm(Model model) {
+        model.addAttribute("bodyContent", "create-booking-form");
+        return "master-template";
+    }
 
     @PostMapping("/create")
     public String createBooking(Model model,

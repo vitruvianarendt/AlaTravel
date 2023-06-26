@@ -4,10 +4,7 @@ import com.nbp.ala_travel.service.InsertIntoReviewAndCheckService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
@@ -15,6 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class InsertIntoReviewAndCheckController {
 
     private final InsertIntoReviewAndCheckService service;
+
+    @GetMapping("/create-form")
+    public String getCreateForm(Model model) {
+        model.addAttribute("bodyContent", "create-review-form");
+        return "master-template";
+    }
 
     @PostMapping("/view1/{touristId}")
     public String getView2(@PathVariable Long touristId, Model model,
