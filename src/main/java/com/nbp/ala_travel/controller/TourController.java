@@ -33,14 +33,7 @@ public class TourController {
         model.addAttribute("createTour",
                 service.createTour(new_starting_point, new_tour_guide_id, new_city_id, new_title, new_desc,
                         new_duration, new_max_participants));
-        model.addAttribute("new_starting_point", new_starting_point);
-        model.addAttribute("new_tour_guide_id", new_tour_guide_id);
-        model.addAttribute("new_city_id", new_city_id);
-        model.addAttribute("new_desc", new_desc);
-        model.addAttribute("new_duration", new_duration);
-        model.addAttribute("new_max_participants", new_max_participants);
-        model.addAttribute("bodyContent", "create-tour");
-        return "master-template";
+        return "redirect:/personController/loginForm";
     }
 }
 

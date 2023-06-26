@@ -1,0 +1,41 @@
+<form method="post" class="needs-validation" novalidate action="/tourController/createTour">
+    <div class="container">
+        <h1>Add New Tour</h1>
+        <div class="form-group">
+            <label for="new_starting_point">Starting Point:</label>
+            <input type="number" class="form-control" id="new_starting_point" name="new_starting_point" required>
+            <div class="invalid-feedback">Starting Point is required.</div>
+        </div>
+        <div class="form-group">
+            <label for="new_tour_guide_id">Tour Guide ID:</label>
+            <input type="number" class="form-control" id="new_tour_guide_id" name="new_tour_guide_id" required>
+            <div class="invalid-feedback">Tour Guide ID is required.</div>
+        </div>
+        <div class="form-group">
+            <label for="new_city_id">City ID:</label>
+            <input type="number" class="form-control" id="new_city_id" name="new_city_id" required>
+            <div class="invalid-feedback">City ID is required.</div>
+        </div>
+        <div class="form-group">
+            <label for="new_title">Title:</label>
+            <input type="text" class="form-control" id="new_title" name="new_title" required>
+            <div class="invalid-feedback">Title is required.</div>
+        </div>
+        <div class="form-group">
+            <label for="new_desc">Description:</label>
+            <textarea class="form-control" id="new_desc" name="new_desc" required></textarea>
+            <div class="invalid-feedback">Description is required.</div>
+        </div>
+        <div class="form-group">
+            <label for="new_duration">Duration (in minutes):</label>
+            <input type="number" class="form-control" id="new_duration" name="new_duration" required>
+            <div class="invalid-feedback">Duration is required.</div>
+        </div>
+        <div class="form-group">
+            <label for="new_max_participants">Max Participants:</label>
+            <input type="number" class="form-control" id="new_max_participants" name="new_max_participants" required>
+            <div class="invalid-feedback">Max Participants is required.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Tour</button>
+    </div>
+</form>
