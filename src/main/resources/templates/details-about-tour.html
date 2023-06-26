@@ -1,0 +1,13 @@
+<div xmlns:th="www.thymeleaf.org">
+    <div class="container">
+        <h2>Tour Details</h2>
+        <div>
+            <h4>Title: <span th:text="${detailsAboutTour.title}"></span></h4>
+            <p>Description: <span th:text="${detailsAboutTour.description}"></span></p>
+            <p>Duration: <span th:text="${detailsAboutTour.duration}"></span> minutes</p>
+            <p>Max Participants: <span th:text="${detailsAboutTour.maxParticipants}"></span></p>
+            <p>City: <span th:text="${city_name}"></span></p>
+            <p>Tour Guide: <span th:text="${detailsAboutTour.tourGuideName}"></span></p>
+        </div>
+    </div>
+</div>
