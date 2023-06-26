@@ -1,5 +1,6 @@
 package com.nbp.ala_travel.controller;
 
+import com.nbp.ala_travel.model.LoginPersonResponse;
 import com.nbp.ala_travel.service.PersonService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 @AllArgsConstructor
 @RequestMapping("personController")
 public class PersonController {
+
     private final PersonService service;
+
+    @GetMapping("/myProfile")
+    public String getMyProfile(Model model,
+                               @RequestParam Long personId,
+                               @RequestParam Boolean isTourGuide,
+                               @RequestParam String message) {
+        model.addAttribute("personId", personId);
+        model.addAttribute("isTourGuide", isTourGuide);
+        model.addAttribute("message", message);
+        model.addAttribute("bodyContent", "profile");
+        return "master-template";
+    }
 
     @GetMapping("/registerDefaultForm")
     public String getRegisterDefaultForm(Model model) {
@@ -66,9 +80,12 @@ public class PersonController {
     public String login(Model model,
                         @RequestParam String email,
                         @RequestParam String password) {
-        model.addAttribute("login", service.login(email, password));
-        return "redirect:/getTop10CitiesWithMostTours/view1";
+        LoginPersonResponse obj = service.login(email, password);
+//        model.addAttribute("bodyContent", "profile");
+        Long personId = obj.getPerson().getId();
+        boolean isTourGuide = obj.getPerson().getIstourguide();
+        String message = obj.getMessage();
+        return "redirect:/personController/myProfile?personId=" + personId + "&isTourGuide=" + isTourGuide + "&message=" + message;
     }
-
 
 }

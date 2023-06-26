@@ -19,5 +19,5 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
                          String new_phonenumber, Integer new_istourguide, String description, String picture);
 
     @Query(value = "select * from login(:email, :password)", nativeQuery = true)
-    void login(String email, String password);
+    Person login(String email, String password);
 }

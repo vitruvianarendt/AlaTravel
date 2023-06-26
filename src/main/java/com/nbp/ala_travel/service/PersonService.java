@@ -1,5 +1,7 @@
 package com.nbp.ala_travel.service;
 
+import com.nbp.ala_travel.model.LoginPersonResponse;
+import com.nbp.ala_travel.model.Person;
 import com.nbp.ala_travel.repository.PersonRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,12 +32,13 @@ public class PersonService {
         return "OK";
     }
 
-    public String login(String email, String password) {
+    public LoginPersonResponse login(String email, String password) {
+        Person person = new Person();
         try {
-            repository.login(email, password);
+            person = repository.login(email, password);
         } catch (Exception e) {
-            return e.getMessage();
+            return new LoginPersonResponse(person, e.getMessage());
         }
-        return "OK";
+        return new LoginPersonResponse(person, "OK");
     }
 }

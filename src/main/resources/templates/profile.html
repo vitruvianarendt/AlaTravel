@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        #loginButton {
+            visibility: hidden;
+        }
+    </style>
+    <script type="text/javascript">
+        function login(person_id, is_tour_guide, message) {
+            localStorage.setItem('personId', person_id);
+            localStorage.setItem('isTourGuide', is_tour_guide);
+            localStorage.setItem('message', message);
+        }
+
+        window.onload = function() {
+            var button = document.getElementById('loginButton');
+            button.click();
+        }
+    </script>
+</head>
+<body>
+<button id="loginButton" th:attr="data-person-id=${personId}, data-is-tour-guide=${isTourGuide}, data-message=${message}" onclick="login(this.getAttribute('data-person-id'), this.getAttribute('data-is-tour-guide'), this.getAttribute('data-message'))">Click me</button>
+
+</body>
+</html>
