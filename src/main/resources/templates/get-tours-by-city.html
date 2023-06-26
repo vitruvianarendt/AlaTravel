@@ -1,21 +1,21 @@
 <div xmlns:th="www.thymeleaf.org">
     <div class="container">
-        <h2>Tours in City: <span th:text="${cityId}"></span></h2>
+        <h2>Tours in City: <span th:text="${getToursByCity[1].city_name}"></span></h2>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th scope="col">Tour Title</th>
                 <th scope="col">Tour Guide</th>
-                <th scope="col">City</th>
                 <th scope="col">Duration (in hours)</th>
                 <th scope="col">Max Participants</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="tour : ${getToursByCity}">
-                <td th:text="${tour.title}"></td>
+                <td>
+                    <a th:href="@{/detailsAboutTourController/view1(tour_name=${tour.title})}" th:text="${tour.title}"></a>
+                </td>
                 <td th:text="${tour.tour_guide_id}"></td>
-                <td th:text="${tour.city_id}"></td>
                 <td th:text="${tour.duration}"></td>
                 <td th:text="${tour.max_number_of_participants}"></td>
             </tr>
@@ -23,3 +23,5 @@
         </table>
     </div>
 </div>
+
+<!--<a th:href="@{/getToursByCity/view1/{cityId}(cityId=${obj.city_id})}" th:text="${obj.city_name}"></a>-->

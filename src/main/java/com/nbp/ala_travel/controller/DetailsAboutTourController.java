@@ -17,7 +17,7 @@ public class DetailsAboutTourController {
     @GetMapping("/view1")
     public String detailsAboutTour(Model model,
                                    @RequestParam String city_name,
-                                   @RequestParam String tour_name) {
+                                   @RequestParam("tour_name") String tour_name) {
         model.addAttribute("detailsAboutTour",
                 service.viewDetailsAboutTour(city_name, tour_name));
         model.addAttribute("city_name", city_name);

@@ -22,5 +22,5 @@ public class GetToursByCity {
     String description;
     Integer duration;
     Integer max_number_of_participants;
-
+    String city_name;
 }
