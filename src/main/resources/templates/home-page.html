@@ -25,6 +25,9 @@
     .ala-travel {
         color: #FF5A5F;
     }
+    a:hover {
+        color: #FF5A5F;
+    }
 </style>
 <div xmlns:th="www.thymeleaf.org">
     <div class="intro-content mx-auto">
@@ -43,8 +46,8 @@
                 <div class="col" >
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">
-                                <a th:href="@{/getToursByCity/view1/{cityId}(cityId=${obj.city_id})}" th:text="${obj.city_name}"></a>
+                            <h5 class="card-title ala-travel">
+                                <a class="ala-travel" th:href="@{/getToursByCity/view1/{cityId}(cityId=${obj.city_id})}" th:text="${obj.city_name}"></a>
                             </h5>
                             <p class="card-text">Number of tours: <span th:text="${obj.number_of_tours}"></span></p>
                         </div>
@@ -55,16 +58,16 @@
 
         <div class="top10ToursWithMostBookings">
             <div>
-                <h2>Top 10 Tours with most cities</h2>
+                <h2>Top 10 Tours with most bookings</h2>
             </div>
             <div class="row " th:each="obj : ${top10ToursWithMostBookings}">
                 <div class="col" >
                     <div class="card">
                         <div class="card-body">
                             <a th:href="@{/detailsAboutTourController/view1(tour_name=${obj.title})}">
-                                <h5 class="card-title" th:text="${obj.title}"></h5>
+                                <h5 class="card-title ala-travel" th:text="${obj.title}"></h5>
                             </a>
-                            <p class="card-text">Number of tours: <span th:text="${obj.number_of_tours}"></span></p>
+                            <p class="card-text">Number of bookings: <span th:text="${obj.number_of_tours}"></span></p>
                         </div>
                     </div>
                 </div>
