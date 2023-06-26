@@ -58,7 +58,9 @@
                 <div class="col" >
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title" th:text="${obj.title}"></h5>
+                            <a th:href="@{/detailsAboutTourController/view1(tour_name=${obj.title})}">
+                                <h5 class="card-title" th:text="${obj.title}"></h5>
+                            </a>
                             <p class="card-text">Number of tours: <span th:text="${obj.number_of_tours}"></span></p>
                         </div>
                     </div>
