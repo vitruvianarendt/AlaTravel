@@ -21,7 +21,7 @@
 <div class="container">
     <div>
         <h2>Tour Instances for this Tour</h2>
-        <a class="btn btn-light btn-sm ml-3" th:href="@{/tourInstanceController/createTourInstanceForm/{tourId}(tourId=${tourInstancesForTour[0].tour_id})}">
+        <a class="btn btn-light btn-sm ml-3" th:href="@{/tourInstanceController/createTourInstanceForm/{tourId}(tourId=${tourId})}">
             Add New Tour Instance
         </a>
     </div>
@@ -36,7 +36,7 @@
                         <p>Tour Time: <span th:text="${tourInstance.tour_time}"></span></p>
                         <p>Tour Date: <span th:text="${tourInstance.tour_date}"></span></p>
                         <p>Available Spots: <span th:text="${tourInstance.available_spots}"></span></p>
-                        <a class="btn btn-primary" th:href="@{/createBookingController/create-form(tour_instance_id=${tourInstance.id})}">
+                        <a class="btn btn-primary" th:href="@{/createBookingController/create-form/{tour_instance_id}(tour_instance_id=${tourInstance.id})}">
                             Create Booking
                         </a>
                     </div>

@@ -9,6 +9,10 @@
             <p>City: <span th:text="${tour.city_name}"></span></p>
             <p>Tour Guide: <span th:text="${tour.guide_description}"></span></p>
             <hr>
+            <div>
+                <a th:href="@{/tourInstancesForTourController/view1/{tourId} (tourId=${tour.id})}">View Tour Instances</a>
+            </div>
         </div>
     </div>
+
 </div>
