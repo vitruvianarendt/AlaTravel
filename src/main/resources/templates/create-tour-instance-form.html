@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Tour Instance</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Create Tour Instance</h2>
+    <form action="/tourInstanceController/createTourInstance" method="post">
+        <div class="form-group">
+            <label for="new_tour_id">Tour ID:</label>
+            <input type="number" class="form-control" id="new_tour_id" name="new_tour_id" required>
+        </div>
+
+        <div class="form-group">
+            <label for="new_tour_guide_id">Tour Guide ID:</label>
+            <input type="number" class="form-control" id="new_tour_guide_id" name="new_tour_guide_id" required>
+        </div>
+
+        <div class="form-group">
+            <label for="new_language_id">Language ID:</label>
+            <input type="number" class="form-control" id="new_language_id" name="new_language_id" required>
+        </div>
+
+        <div class="form-group">
+            <label for="new_time">Time:</label>
+            <input type="time" class="form-control" id="new_time" name="new_time" required>
+        </div>
+
+        <div class="form-group">
+            <label for="new_date">Date:</label>
+            <input type="date" class="form-control" id="new_date" name="new_date" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Tour Instance</button>
+    </form>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+

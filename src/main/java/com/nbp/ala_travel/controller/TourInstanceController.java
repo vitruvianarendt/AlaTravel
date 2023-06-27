@@ -46,13 +46,7 @@ public class TourInstanceController {
                                      @RequestParam LocalDate new_date) {
         model.addAttribute("createTourInstance",
                 service.createTourInstance(new_tour_id, new_tour_guide_id, new_language_id, new_time, new_date));
-        model.addAttribute("touristId", new_tour_id);
-        model.addAttribute("grade", new_tour_guide_id);
-        model.addAttribute("touristId", new_language_id);
-        model.addAttribute("grade", new_time);
-        model.addAttribute("touristId", new_date);
-        model.addAttribute("bodyContent", "createTourInstance");
-        return "master-template";
+        return "redirect:/tourInstanceController/createTourInstanceForm";
     }
 
 }
