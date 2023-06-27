@@ -26,7 +26,7 @@
 
         <div class="form-group">
             <label for="tourId">Tour ID:</label>
-            <input type="number" class="form-control" id="tourId" name="tourId" required>
+            <input type="number" class="form-control" id="tourId" name="tourId">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit Review</button>
@@ -37,7 +37,7 @@
 <script>
     const personId = localStorage.getItem("personId");
     document.getElementById("personId").value = personId;
-    const tourId = window.location.pathname.split("?").pop();
+    const tourId = window.location.pathname.split("=")[1];
     document.getElementById("tourId").value = tourId;
 </script>
 </body>

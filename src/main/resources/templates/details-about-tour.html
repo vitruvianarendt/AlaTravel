@@ -1,3 +1,9 @@
+<style>
+    .row {
+        margin-bottom: 10px;
+        border-radius: 20px;
+    }
+</style>
 <div xmlns:th="www.thymeleaf.org">
     <div class="container">
         <h2>Tour Details</h2>
@@ -13,7 +19,27 @@
                 <a th:href="@{/tourInstancesForTourController/view1/{tourId} (tourId=${tour.id})}">View Tour Instances</a>
             </div>
             <div>
-                <a th:href="@{/tourInstancesForTourController/view1/{tourId} (tourId=${tour.id})}">Leave a review</a>
+                <a th:href="@{/reviewController/reviewForm(tourId=${tour.id})}">Leave a review</a>
+            </div>
+
+            <hr>
+
+            <div>
+                <div class="top10CitiesWithMostTours">
+                    <div>
+                        <h2>Reviews</h2>
+                    </div>
+                    <div class="row " th:each="obj : ${reviews}">
+                        <div class="col" >
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">Grade: <span th:text="${obj.grade}"></span></p>
+                                    <p class="card-text">Description: <span th:text="${obj.description}"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

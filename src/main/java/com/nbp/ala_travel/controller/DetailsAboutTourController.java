@@ -2,6 +2,7 @@ package com.nbp.ala_travel.controller;
 
 import com.nbp.ala_travel.model.DetailsAboutTour;
 import com.nbp.ala_travel.service.DetailsAboutTourService;
+import com.nbp.ala_travel.service.ReviewService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import java.util.List;
 @RequestMapping("detailsAboutTourController")
 public class DetailsAboutTourController {
     private final DetailsAboutTourService service;
+    private final ReviewService reviewService;
 
     @GetMapping("/view1")
     public String detailsAboutTour(Model model,
@@ -26,6 +28,7 @@ public class DetailsAboutTourController {
         model.addAttribute("id", dat.get(0).getId());
         model.addAttribute("city_name", city_name);
         model.addAttribute("tour_name", tour_name);
+        model.addAttribute("reviews", reviewService.getReviewsForTour(dat.get(0).getId()));
         model.addAttribute("bodyContent", "details-about-tour");
         return "master-template";
     }
