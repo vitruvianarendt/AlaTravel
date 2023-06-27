@@ -16,7 +16,9 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @GetMapping("/reviewForm")
-    public String getReviewForm(Model model) {
+    public String getReviewForm(Model model,
+                                @RequestParam Long tourId) {
+        model.addAttribute("tourId", "tourId");
         model.addAttribute("bodyContent", "review-form");
         return "master-template";
     }
