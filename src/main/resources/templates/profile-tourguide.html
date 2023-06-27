@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+
     <style>
         #loginButton {
             visibility: hidden;
@@ -12,7 +10,7 @@
             border-radius: 10px;
             margin-bottom: 10px;
         }
-        .favouriteTours {
+        .tourGuideTours {
             width: 50%;
             float: left;
             overflow-y: auto;
@@ -21,7 +19,7 @@
             margin-right: 15px;
             padding: 20px;
         }
-        .savedTourInstances {
+        .bookingsForTourguide {
             width: 50%;
             float: right;
             overflow-y: auto;
@@ -67,18 +65,7 @@
         const isTourGuide = localStorage.getItem('isTourGuide');
         const message = localStorage.getItem('message');
 
-        console.log(isTourGuide)
 
-        if (isTourGuide) {
-            console.log("VODIC")
-            document.getElementById('tourist1').style.display = 'none';
-        } else {
-            console.log("TURIST")
-            const elements = document.getElementsByClassName("tourguide");
-            for (let i = 0; i < elements.length; i++) {
-                elements[i].style.setProperty('display', 'none', 'important');
-            }
-        }
     </script>
 
 <body>
@@ -88,65 +75,45 @@
 
     <div class="container container-custom">
 
-        <div id="tourist1" class="favouriteTours ">
+        <div class="tourGuideTours ">
             <div>
-                <h2>Favourite Tours</h2>
+                <h2>My Tours</h2>
             </div>
-            <div class="row " th:each="obj : ${touristFavouriteTours}">
+            <div class="row " th:each="obj : ${tourGuideTours}">
                 <div class="col" >
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title ala-travel">
-                                <a class="ala-travel" th:href="@{/detailsAboutTourController/view1(tour_name=${obj.tour_name})}" th:text="${obj.tour_name}"></a>
+                                <a class="ala-travel" th:href="@{/detailsAboutTourController/view1(tour_name=${obj.title})}" th:text="${obj.title}"></a>
                             </h5>
-                            <p class="card-text">Tourguide: <span th:text="${obj.tour_guide_first_name}"></span>&nbsp;<span th:text="${obj.tour_guide_last_name}"></span></p>
-                            <p>City: <span th:text="${obj.city_name}"></span></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="savedTourInstances tourist">
+        <div class="bookingsForTourguide">
             <div>
-                <h2>Saved Tour Instances</h2>
+                <h2>Bookings</h2>
             </div>
-            <div class="row " th:each="obj : ${touristSavedTourInstances}">
+            <div class="row " th:each="obj : ${bookingsForTourguide}">
                 <div class="col" >
                     <div class="card">
                         <div class="card-body">
                             <a class="ala-travel" >
-                                <h5 class="card-title ala-travel" th:text="${obj.tour_name}"></h5>
-                            </a>
-                            <p class="card-text">City: <span th:text="${obj.city_name}"></span></p>
-                            <p class="card-text">Language: <span th:text="${obj.tour_instance_language}"></span></p>
-                            <p class="card-text">Date: <span th:text="${obj.tour_date}"></span></p>
-                            <p class="card-text">Time: <span th:text="${obj.tour_time}"></span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container container-custom booking-container tourist">
-        <div class="bookingsForTourist mx-auto ">
-            <div>
-                <h2>My Bookings</h2>
-            </div>
-            <div class="row " th:each="obj : ${bookingsForTourist}">
-                <div class="col" >
-                    <div class="card">
-                        <div class="card-body">
-                            <a >
                                 <h5 class="card-title ala-travel" th:text="${obj.title}"></h5>
                             </a>
                             <p class="card-text">City: <span th:text="${obj.city_name}"></span></p>
+                            <p class="card-text">From: <span th:text="${obj.tourist_email}"></span></p>
+                            <p class="card-text">Participants: <span th:text="${obj.number_of_participants}"></span></p>
+                            <p class="card-text">Time: <span th:text="${obj.ti_time}"></span></p>
+                            <p class="card-text">Date: <span th:text="${obj.ti_date}"></span></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 

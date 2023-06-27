@@ -35,15 +35,17 @@ public class PersonController {
         // optional
         if (isTourGuide) {
             model.addAttribute("tourGuideTours", tourService.getToursFromPersonId(personId));
-            model.addAttribute("bookingsForTourguide", bookingsForTourguideService.getBookingsForTourguide(personId));
+            model.addAttribute("bookingsForTourguide", bookingsForTourguideService.getBookingsFromPersonid(personId));
+            model.addAttribute("bodyContent", "profile-tourguide");
+
         } else {
             model.addAttribute("touristFavouriteTours", touristFavouriteToursService.filter_favourite_tours(personId,null));
             model.addAttribute("touristSavedTourInstances", touristSavedTourInstancesService.touristSavedTourInstances(personId, null, null));
             model.addAttribute("bookingsForTourist", getBookingsForTouristService.getBookingsForTourist(personId));
+            model.addAttribute("bodyContent", "profile");
         }
-
-        model.addAttribute("bodyContent", "profile");
         return "master-template";
+
     }
 
     @GetMapping("/registerDefaultForm")
