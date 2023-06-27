@@ -1,4 +1,40 @@
 <header xmlns:th="http://www.thymeleaf.org">
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      const personId = localStorage.getItem('personId');
+      if (personId) {
+        document.getElementById('auth').style.display = 'none';
+        document.getElementById('profile').style.display = '';
+        document.getElementById('logout').style.display = '';
+      } else {
+        document.getElementById('auth').style.display = '';
+        document.getElementById('profile').style.display = 'none';
+        document.getElementById('logout').style.display = 'none';
+      }
+    });
+
+    function logout() {
+      localStorage.removeItem('personId');
+      localStorage.removeItem('isTourGuide');
+      localStorage.removeItem('message');
+    }
+
+    function updateProfileLink() {
+      const getPersonId = parseInt(localStorage.getItem('personId'), 10);
+      const getIsTourGuide = localStorage.getItem('isTourGuide');
+      const getMessage = localStorage.getItem('message');
+      const url = '/personController/myProfile?personId=' + getPersonId + '&isTourGuide=' + getIsTourGuide + '&message=' + getMessage;
+      window.location.href = url;
+    }
+  </script>
+  <style>
+    #navbarsExampleDefault {
+      display: flex;
+    }
+    #profile {
+      float: right;
+    }
+  </style>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="/home">Ala Travel</a>
@@ -6,35 +42,32 @@
               aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+      <ul class="navbar-nav m-auto" id="profile">
+        <li class="nav-item m-auto">
+          <button class="btn btn-light btn-sm ml-3" id="profileLink"  onclick="updateProfileLink()">My Profile</button>
+        </li>
+      </ul>
       <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
-        <ul class="navbar-nav m-auto">
-          <li class="nav-item m-auto">
-            <a class="nav-link active" href="/TourController/view1">Tours</a>
-          </li>
-          <li class="nav-item m-auto" >
-            <a class="nav-link active" href="/getTop10CitiesWithMostTours/view1">Bookings</a>
-          </li>
-          <li class="nav-item m-auto" >
-            <a class="nav-link active" href="/manufacturers">My Profile</a>
-          </li>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item" >
+        <ul class="nav navbar-nav navbar-right" id="auth">
+          <li class="nav-item">
             <a class="btn btn-light btn-sm ml-3" href="/personController/loginForm">
               <i class="fa fa-shopping-cart"></i> Login
             </a>
           </li>
-          <li class="nav-item" >
+          <li class="nav-item">
             <a class="btn btn-light btn-sm ml-3" href="/personController/registerDefaultForm">
               <i class="fa fa-shopping-cart"></i> Register
             </a>
           </li>
-          <li class="nav-item" >
+          <li class="nav-item">
             <a class="btn btn-dark btn-sm ml-3" href="/personController/registerDescPicForm">
               <i class="fa fa-shopping-cart"></i> Register as a Tour Guide
             </a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" id="logout">
+          <li class="nav-item m-auto">
+            <button class="btn btn-light btn-sm ml-3" onclick="logout()">Logout</button>
           </li>
         </ul>
       </div>
