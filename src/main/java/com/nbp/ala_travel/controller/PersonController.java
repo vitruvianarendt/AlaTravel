@@ -1,7 +1,7 @@
 package com.nbp.ala_travel.controller;
 
 import com.nbp.ala_travel.model.LoginPersonResponse;
-import com.nbp.ala_travel.service.PersonService;
+import com.nbp.ala_travel.service.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,15 +16,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PersonController {
 
     private final PersonService service;
+    private final TouristSavedTourInstancesService touristSavedTourInstancesService;
+    private final TouristFavouriteToursService touristFavouriteToursService;
+    private final GetBookingsForTouristService getBookingsForTouristService;
+    private final BookingsForTourguideService bookingsForTourguideService;
+    private final TourService tourService;
 
     @GetMapping("/myProfile")
     public String getMyProfile(Model model,
                                @RequestParam Long personId,
                                @RequestParam Boolean isTourGuide,
                                @RequestParam String message) {
+        // general (must included)
         model.addAttribute("personId", personId);
         model.addAttribute("isTourGuide", isTourGuide);
         model.addAttribute("message", message);
+
+        // optional
+        if (isTourGuide) {
+            model.addAttribute("tourGuideTours", tourService.getToursFromPersonId(personId));
+            model.addAttribute("bookingsForTourguide", bookingsForTourguideService.getBookingsForTourguide(personId));
+        } else {
+            model.addAttribute("touristFavouriteTours", touristFavouriteToursService.filter_favourite_tours(personId,null));
+            model.addAttribute("touristSavedTourInstances", touristSavedTourInstancesService.touristSavedTourInstances(personId, null, null));
+            model.addAttribute("bookingsForTourist", getBookingsForTouristService.getBookingsForTourist(personId));
+        }
+
         model.addAttribute("bodyContent", "profile");
         return "master-template";
     }
