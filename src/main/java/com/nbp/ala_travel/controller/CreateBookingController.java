@@ -1,6 +1,5 @@
 package com.nbp.ala_travel.controller;
 
-import com.nbp.ala_travel.model.CreateBookingResponse;
 import com.nbp.ala_travel.service.CreateBookingService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,9 @@ public class CreateBookingController {
     private final CreateBookingService service;
 
     @GetMapping("/create-form")
-    public String createBookingForm(Model model) {
+    public String createBookingForm(Model model,
+                                    @RequestParam Long tour_instance_id) {
+        model.addAttribute("tour_instance_id", tour_instance_id);
         model.addAttribute("bodyContent", "create-booking-form");
         return "master-template";
     }

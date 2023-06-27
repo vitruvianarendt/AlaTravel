@@ -4,10 +4,7 @@ import com.nbp.ala_travel.service.TourInstanceService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -37,8 +34,10 @@ public class TourInstanceController {
         return "master-template";
     }
 
-    @GetMapping("/createTourInstanceForm")
-    public String createTourInstanceForm(Model model) {
+    @GetMapping("/createTourInstanceForm/{tourId}")
+    public String createTourInstanceForm(Model model,
+                                         @PathVariable Long tourId) {
+        model.addAttribute("tourId", tourId);
         model.addAttribute("bodyContent", "create-tour-instance-form");
         return "master-template";
     }
@@ -52,7 +51,8 @@ public class TourInstanceController {
                                      @RequestParam LocalDate new_date) {
         model.addAttribute("createTourInstance",
                 service.createTourInstance(new_tour_id, new_tour_guide_id, new_language_id, new_time, new_date));
-        return "redirect:/tourInstanceController/createTourInstanceForm";
+        return "redirect:/tourInstancesForTourController/view1/" + new_tour_id;
+//        return "/home";
     }
 
 }

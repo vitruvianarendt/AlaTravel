@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .tour-instance {
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .tour-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .tour-details {
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div>
+        <h2>Tour Instances for this Tour</h2>
+        <a class="btn btn-light btn-sm ml-3" th:href="@{/tourInstanceController/createTourInstanceForm/{tourId}(tourId=${tourInstancesForTour[0].tour_id})}">
+            Add New Tour Instance
+        </a>
+    </div>
+    <div class="row">
+        <div th:each="tourInstance : ${tourInstancesForTour}" class="col-md-4">
+            <div class="card tour-instance">
+                <div class="card-body">
+                    <h5 class="card-title tour-name" th:text="${tourInstance.tour_id}"></h5>
+                    <div class="tour-details">
+                        <p>Tour Guide ID: <span th:text="${tourInstance.tour_guide_id}"></span></p>
+                        <p>Language ID: <span th:text="${tourInstance.language_id}"></span></p>
+                        <p>Tour Time: <span th:text="${tourInstance.tour_time}"></span></p>
+                        <p>Tour Date: <span th:text="${tourInstance.tour_date}"></span></p>
+                        <p>Available Spots: <span th:text="${tourInstance.available_spots}"></span></p>
+                        <a class="btn btn-primary" th:href="@{/createBookingController/create-form(tour_instance_id=${tourInstance.id})}">
+                            Create Booking
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

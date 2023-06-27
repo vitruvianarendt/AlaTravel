@@ -39,6 +39,9 @@
 </div>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+    const tourId = window.location.pathname.split("/").pop();
+    document.getElementById("new_tour_id").value = tourId;
+</script>
 </body>
 </html>
-

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Booking</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Create Booking</h2>
+    <form action="/createBookingController/create" method="post">
+        <div class="form-group">
+            <label for="p_number_of_participants">Number of Participants:</label>
+            <input type="number" class="form-control" id="p_number_of_participants" name="p_number_of_participants" required>
+        </div>
+
+        <div class="form-group">
+            <label for="p_tourist_id">Tourist ID:</label>
+            <input type="number" class="form-control" id="p_tourist_id" name="p_tourist_id" required>
+        </div>
+
+        <div class="form-group">
+            <label for="p_tour_instance_id">Tour Instance ID:</label>
+            <input type="number" class="form-control" id="p_tour_instance_id" name="p_tour_instance_id" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Booking</button>
+    </form>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
