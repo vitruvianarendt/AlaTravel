@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class LoginPersonResponse {
-    Person person;
-    String message;
+    public Person person;
+    public String message;
 
     public Person getPerson() {
         return person;

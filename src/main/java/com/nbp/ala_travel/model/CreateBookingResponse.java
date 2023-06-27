@@ -4,6 +4,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class CreateBookingResponse {
-    CreateBooking booking;
-    String message;
+    public CreateBooking booking;
+    public String message;
 }

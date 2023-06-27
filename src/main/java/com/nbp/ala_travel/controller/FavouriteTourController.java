@@ -17,10 +17,17 @@ public class FavouriteTourController {
     public String savedFavouriteTour(Model model,
                                      @PathVariable Long touristId,
                                      @RequestParam Long tourid) {
-        model.addAttribute("insertIntoReviewAndCheck", service.savedFavouriteTour(touristId, tourid));
-        model.addAttribute("touristId", touristId);
-        model.addAttribute("tourid", tourid);
-        model.addAttribute("bodyContent", "savedFavouriteTour");
+        String result = service.savedFavouriteTour(touristId, tourid);
+        if (result.equals("OK")) {
+            model.addAttribute("insertIntoReviewAndCheck", service.savedFavouriteTour(touristId, tourid));
+            model.addAttribute("touristId", touristId);
+            model.addAttribute("tourid", tourid);
+            model.addAttribute("bodyContent", "savedFavouriteTour");
+        } else  {
+            model.addAttribute("errorMsg", result);
+            model.addAttribute("bodyContent","error");
+        }
+
         return "master-template";
     }
 }

@@ -23,11 +23,17 @@ public class TourInstanceController {
     public String saveTourInstance(Model model,
                                    @RequestParam Long tourist_id,
                                    @RequestParam Long tour_instance_id) {
-        model.addAttribute("saveTourInstance",
-                service.saveTourInstance(tourist_id, tour_instance_id));
-        model.addAttribute("touristId", tourist_id);
-        model.addAttribute("grade", tour_instance_id);
-        model.addAttribute("bodyContent", "saveTourInstance"); //just in case, change later
+        String result = service.saveTourInstance(tourist_id, tour_instance_id);
+        if (result.equals("OK")) {
+            model.addAttribute("saveTourInstance", result);
+            model.addAttribute("touristId", tourist_id);
+            model.addAttribute("grade", tour_instance_id);
+            model.addAttribute("bodyContent", "saveTourInstance"); //just in case, change later
+        } else {
+            model.addAttribute("errorMsg", result);
+            model.addAttribute("bodyContent","error");
+        }
+
         return "master-template";
     }
 

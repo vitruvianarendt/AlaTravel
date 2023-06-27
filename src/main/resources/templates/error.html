@@ -1,0 +1,21 @@
+<!--<script>-->
+<!--  const msg = window.location.pathname.split("/").pop();-->
+<!--  document.getElementById("error-block").value = tourId;-->
+<!--</script>-->
+<style>
+  .landmark-cont {
+    margin-top: 50px;
+  }
+  .result-div {
+    margin-top: 50px;
+  }
+  .welcome{
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+</style>
+<div xmlns:th="http://www.thymeleaf.org">
+  <div class="container landmark-cont">
+    <h3 id="error-block" th:text="${errorMsg}"></h3>
+  </div>
+</div>
