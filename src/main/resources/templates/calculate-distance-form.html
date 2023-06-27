@@ -1,0 +1,44 @@
+<style>
+    .landmark-cont {
+        margin-top: 50px;
+    }
+    .result-div {
+        margin-top: 50px;
+    }
+    .welcome{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+</style>
+<div xmlns:th="http://www.thymeleaf.org">
+    <div class="container landmark-cont">
+        <div class="welcome">
+            <h4>Calculate distance between 2 landmark points</h4>
+        </div>
+        <form method="post" action="/calculateDistanceController/calculate-distance">
+            <div class="form-group">
+                <label for="landmarkid1">Landmark 1:</label>
+                <select class="form-control" id="landmarkid1" name="landmarkid1" required>
+                    <option value=""></option> <!-- Add an option for "None" or an empty value -->
+                    <option th:each="obj : ${landmarksDto}" th:value="${obj.id}"
+                            th:text="${obj.landmark_name + ' (' + obj.city_name + ')'}"
+                            th:selected="${obj.id == null}"> <!-- Add the 'th:selected' attribute with a condition -->
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="landmarkid2">Landmark 2:</label>
+                <select class="form-control" id="landmarkid2" name="landmarkid2" required>
+                    <option value=""></option> <!-- Add an option for "None" or an empty value -->
+                    <option th:selected="${obj.id == null}" th:each="obj : ${landmarksDto}" th:value="${obj.id}"  th:text="${obj.landmark_name + ' (' + obj.city_name + ')'}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Calculate Distance</button>
+        </form>
+        <div class="result-div" th:if="${submitted == 1}">
+            <h5>Distance in kilometers: &nbsp;</h5>
+            <h5 th:text="${result}"></h5>
+        </div>
+    </div>
+
+</div>
